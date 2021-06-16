@@ -1,21 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import './components/myDrawer/main.dart';
 import './components//myAppBar/main.dart';
 import './pages/home/main.dart';
 import './pages/list/main.dart';
 import './pages/user/main.dart';
+import './router/routes.dart';
+import './common/utils/initial.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_demo/provider/main.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {
-  runApp(MyApp());
+  Global.init().then((e) => runApp(MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  _MyAppState() {
+    final router = FluroRouter();
+    Routes.configureRoutes(router);
+    Routes.router = router;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value: SelectColor()),
+        ],
+        child: ScreenUtilInit(
+            designSize: Size(375, 667),
+            builder: () => MaterialApp(
+                  theme: ThemeData(
+                      primarySwatch: Colors.orange,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent),
+                  // 配置路由
+                  onGenerateRoute: Routes.router.generator,
+                  navigatorKey: navigatorKey,
+                  home: MainPage(),
+                  // routes: staticRouters,
+                )));
   }
 }
 
@@ -46,7 +79,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: PreferredSize(
         child: MyAppBar(),
-        preferredSize: Size.fromHeight(120.0),
+        preferredSize: Size.fromHeight(90.0),
       ),
       drawer: MyDrawer(),
       body: this._pageList[this._currentIndex],

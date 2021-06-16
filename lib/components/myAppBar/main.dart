@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './search/main.dart';
+import 'package:flutter_demo/router/routes.dart';
 
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   MyAppBar({Key key}) : super(key: key);
@@ -36,15 +37,14 @@ class _AppbarState extends State<MyAppBar> {
                         IconButton(
                             color: Colors.black,
                             icon: Icon(Icons.perm_identity),
-                            onPressed: null)
+                            onPressed: () =>
+                                Navigator.pushNamed(context, 'signIn'))
                       ],
                     ),
                   ),
                   Flexible(
                       child: Center(
-                    child: Image.network(
-                        'https://img1.homary.com/common/2021/05/27/616326058adee71aa21eda37a13fb2ac.png',
-                        width: 100),
+                    child: Image.asset('assets/logo.png', width: 100),
                   )),
                   Container(
                     width: 100,
@@ -53,11 +53,12 @@ class _AppbarState extends State<MyAppBar> {
                         IconButton(
                             color: Colors.black,
                             icon: Icon(Icons.favorite_border),
-                            onPressed: null),
+                            onPressed: () => Routes.push(
+                                context, '/favorite/p123?name=shean&price=31')),
                         IconButton(
                             color: Colors.black,
                             icon: Icon(Icons.shopping_cart_outlined),
-                            onPressed: null)
+                            onPressed: () => Routes.push(context, '/car'))
                       ],
                     ),
                   )

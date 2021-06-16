@@ -11,19 +11,29 @@ class _AppbarState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ListView.separated(
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          title: Text("test title"),
-          trailing: Icon(Icons.chevron_right),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return Divider(
+        child: Column(
+      children: [
+        SizedBox(height: 130),
+        ListTile(
+            title: Text("test title"), trailing: Icon(Icons.chevron_right)),
+        Divider(
           color: Colors.grey[500],
-        );
-      },
-      itemCount: 5,
+        )
+        // ListView.separated(
+        //   itemBuilder: (BuildContext context, int index) {
+        //     return ListTile(
+        //       title: Text("test title"),
+        //       trailing: Icon(Icons.chevron_right),
+        //     );
+        //   },
+        //   separatorBuilder: (BuildContext context, int index) {
+        //     return Divider(
+        //       color: Colors.grey[500],
+        //     );
+        //   },
+        //   itemCount: 3,
+        // )
+      ],
     ));
   }
 }

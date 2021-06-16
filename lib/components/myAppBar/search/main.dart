@@ -16,12 +16,10 @@ class _AppbarSearchState extends State<AppbarSearch> {
           height: 35,
           decoration: BoxDecoration(color: Colors.white),
           child: Padding(
-              padding: EdgeInsets.only(left: 10, right: 10),
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  accentColor: Colors.orange,
-                ),
+            padding: EdgeInsets.only(left: 10, right: 10),
+            child: GestureDetector(
                 child: TextField(
+                  enabled: false,
                   cursorColor: Colors.orange,
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0),
@@ -36,29 +34,12 @@ class _AppbarSearchState extends State<AppbarSearch> {
                         ),
                       ),
                       filled: true,
+                      fillColor: Colors.grey[200],
                       hintStyle: TextStyle(color: Colors.grey[500]),
-                      hintText: "Search for product"),
+                      hintText: 'search for products'),
                 ),
-              )),
+                onTap: () => print('do some thing')),
+          ),
         ));
   }
 }
-
-// TextField(
-//                   cursorColor: Colors.orange,
-//                   decoration: InputDecoration(
-//                       contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-//                       prefixIcon: Icon(Icons.search),
-//                       border: OutlineInputBorder(
-//                         borderSide: BorderSide(
-//                           width: 0,
-//                           style: BorderStyle.none,
-//                         ),
-//                         borderRadius: BorderRadius.all(
-//                           Radius.circular(3.0),
-//                         ),
-//                       ),
-//                       filled: true,
-//                       hintStyle: TextStyle(color: Colors.grey[500]),
-//                       hintText: "Search for product"),
-//                 )
