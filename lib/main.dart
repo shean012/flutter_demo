@@ -10,6 +10,8 @@ import './common/utils/initial.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_demo/provider/main.dart';
+import 'package:flutter_demo/common/utils/entrance.dart';
+import 'dart:async';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {
@@ -61,6 +63,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
+  StreamSubscription _sub;
 
   List<Widget> _pageList = [
     HomePage(),
@@ -73,6 +76,22 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(icon: Icon(Icons.list), label: '列表'),
     BottomNavigationBarItem(icon: Icon(Icons.people), label: '我的'),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    _sub = await initUniLinks(context);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (_sub != null) _sub.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
