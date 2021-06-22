@@ -5,5 +5,7 @@ void handleSchema(context, String link) {
     'baomi://',
     '/',
   );
-  if (_targetUrl != null) Routes.push(context, link);
+  if (_targetUrl != null) {
+    Routes.push(context, _targetUrl);
+  }
 }
