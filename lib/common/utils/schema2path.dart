@@ -6,6 +6,7 @@ void handleSchema(context, String link) {
     '/',
   );
   if (_targetUrl != null) {
+    // do something before page push
     Routes.push(context, _targetUrl);
   }
 }

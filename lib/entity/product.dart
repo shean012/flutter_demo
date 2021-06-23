@@ -1,3 +1,5 @@
+
+// 首页商品响应
 class HomeProductsRes {
   HomeProductsRes({
     this.code,

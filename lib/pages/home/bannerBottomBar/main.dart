@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_demo/common/utils/main.dart';
 
 class BannerBottomBarItem extends StatelessWidget {
   final title;
@@ -16,9 +15,9 @@ class BannerBottomBarItem extends StatelessWidget {
       margin: this.margin,
       child: Row(
         children: [
-          Icon(this.icon, size: 14),
+          Icon(this.icon, size: 14.sp),
           SizedBox(width: 5.w),
-          Text(this.title)
+          Text(this.title, style: TextStyle(fontSize: 13.sp))
         ],
       ),
     );

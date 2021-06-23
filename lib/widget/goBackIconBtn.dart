@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_demo/common/style/main.dart';
-import 'package:flutter_demo/router/routes.dart';
+import 'package:flutter_demo/common/utils/main.dart';
 
 class GobackIconBtn extends StatelessWidget {
   final Color color;

@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-// import 'package:flutter_demo/common/style/main.dart';
+
 import 'package:flutter_demo/components/goBackAppBar/main.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_demo/provider/main.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_demo/common/utils/main.dart';
 
 class CarPage extends StatelessWidget {
   const CarPage({Key key}) : super(key: key);

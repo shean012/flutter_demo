@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_demo/common/utils/main.dart';
 import './bannerBottomBar/main.dart';
 import '../../components/titleBar/main.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_demo/provider/main.dart';
 
 // 首页页面
 class HomePage extends StatelessWidget {
@@ -18,7 +15,8 @@ class HomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 200.h,
-            margin: EdgeInsets.only(top: 10, left: 10, bottom: 20, right: 10),
+            margin: EdgeInsets.only(
+                top: 10.h, left: 10.w, bottom: 20.h, right: 10.w),
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
@@ -26,7 +24,7 @@ class HomePage extends StatelessWidget {
                     fit: BoxFit.contain),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  width: 2.0,
+                  width: 2.w,
                   color: Colors.grey[200],
                 )),
           ),
@@ -37,13 +35,13 @@ class HomePage extends StatelessWidget {
               BannerBottomBarItem(
                   title: 'Get \$300 Off',
                   icon: Icons.car_rental,
-                  margin: EdgeInsets.only(left: 20)),
+                  margin: EdgeInsets.only(left: 20.w)),
               BannerBottomBarItem(
                   title: 'Free Shipping', icon: Icons.car_rental),
               BannerBottomBarItem(
                   title: '30-Day Return',
                   icon: Icons.calendar_today_outlined,
-                  margin: EdgeInsets.only(right: 20)),
+                  margin: EdgeInsets.only(right: 20.w)),
             ],
           ),
           TitleBar(title: 'Living Room Module', targetUrl: ''),

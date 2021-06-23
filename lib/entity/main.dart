@@ -1,3 +1,4 @@
 library entity;
 
-export 'user.dart';
+export 'user.dart' hide Data;
+export 'product.dart' hide Data;

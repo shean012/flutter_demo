@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_demo/api/user.dart';
-import 'package:flutter_demo/common/style/main.dart';
+import 'package:flutter_demo/common/utils/main.dart';
+import 'package:flutter_demo/api/main.dart';
 import 'package:flutter_demo/components/goBackAppBar/main.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_demo/common/utils/validator.dart';
 import 'package:flutter_demo/components/input_form/main.dart';
-import 'package:flutter_demo/entity/main.dart';
-import 'package:flutter_demo/api/main.dart';
 import './tabItem/main.dart'; // TabBar 部件
 
 class SignInPage extends StatefulWidget {

@@ -1,8 +1,5 @@
 import 'package:flutter_demo/api/main.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_demo/router/routes.dart';
-import 'package:flutter_demo/common/style/main.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_demo/common/utils/main.dart';
 
 class FavoritePage extends StatefulWidget {
   final String id;
@@ -21,7 +18,7 @@ class _FavoritePageState extends State<FavoritePage> {
   }
 
   _getdata() async {
-    var res = await ProductApi.getProduct();
+    HomeProductsRes res = await ProductApi.getProduct();
     print('res ---- get product $res');
   }
 

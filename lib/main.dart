@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter_demo/common/utils/entrance.dart';
 import 'package:fluro/fluro.dart';
 import './components/myDrawer/main.dart';
 import './components//myAppBar/main.dart';
@@ -6,12 +7,7 @@ import './pages/home/main.dart';
 import './pages/list/main.dart';
 import './pages/user/main.dart';
 import './router/routes.dart';
-import './common/utils/initial.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_demo/provider/main.dart';
-import 'package:flutter_demo/common/utils/entrance.dart';
-import 'dart:async';
+import 'package:flutter_demo/common/utils/main.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {

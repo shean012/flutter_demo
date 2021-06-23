@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_demo/common/style/main.dart';
 
 class TitleBar extends StatelessWidget {
   final String title;
