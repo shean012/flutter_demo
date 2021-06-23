@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: SelectColor()),
+          ChangeNotifierProvider.value(value: GoodsList())
         ],
         child: ScreenUtilInit(
             designSize: Size(375, 667),
