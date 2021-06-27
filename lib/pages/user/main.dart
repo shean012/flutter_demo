@@ -1,4 +1,5 @@
 import 'package:flutter_demo/common/utils/main.dart';
+import 'package:flutter_demo/webView/product.dart';
 
 // 列表页页面
 class UserPage extends StatelessWidget {
@@ -6,6 +7,6 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text('user page')));
+    return Container(child: ProductWebview());
   }
 }
