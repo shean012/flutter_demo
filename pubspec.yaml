@@ -36,6 +36,7 @@ dependencies:
   transparent_image: ^2.0.0
   flutter_screenutil: ^5.0.0+2
   shared_preferences: ^2.0.6
+  webview_flutter: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,7 @@ flutter:
   assets:
     - assets/baseImage.png
     - assets/logo.png
+    - assets/webview.html
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
