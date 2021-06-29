@@ -11,6 +11,7 @@ class Global {
   /// init
   static Future init() async {
     // 运行初始
+    
     WidgetsFlutterBinding.ensureInitialized();
 
     // 初始化工具函数

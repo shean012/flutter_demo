@@ -1,6 +1,6 @@
-
 import 'package:flutter_demo/components/goBackAppBar/main.dart';
 import 'package:flutter_demo/common/utils/main.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 
 class CarPage extends StatelessWidget {
   const CarPage({Key key}) : super(key: key);
@@ -8,6 +8,7 @@ class CarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final targetColor = Provider.of<SelectColor>(context);
+    final curLangCtrl = Provider.of<Lang>(context);
     print('run car page bulid');
     return Scaffold(
         appBar: GoBackAppBar(),
@@ -69,6 +70,24 @@ class CarPage extends StatelessWidget {
                         }))
                   ],
                 ),
+                Wrap(
+                  children: [
+                    TextButton(
+                        onPressed: () {},
+                        child: Text('${S.of(context).button}')),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text('${S.of(context).title}')),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text('${S.of(context).drawer_tip}')),
+                    TextButton(
+                        onPressed: () {
+                          curLangCtrl.changeCurLang();
+                        },
+                        child: Text('切换语言'))
+                  ],
+                )
               ],
             )));
   }

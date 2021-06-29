@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'package:flutter_demo/common/utils/entrance.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluro/fluro.dart';
-import './components/myDrawer/main.dart';
-import './components//myAppBar/main.dart';
-import './pages/home/main.dart';
-import './pages/list/main.dart';
-import './pages/user/main.dart';
-import './router/routes.dart';
+import 'package:flutter_demo/router/routes.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 import 'package:flutter_demo/common/utils/main.dart';
+import 'package:flutter_demo/pages/index/main.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {
@@ -33,21 +31,33 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: SelectColor()),
-          ChangeNotifierProvider.value(value: GoodsList())
+          ChangeNotifierProvider.value(value: GoodsList()),
+          ChangeNotifierProvider.value(value: Lang())
         ],
-        child: ScreenUtilInit(
-            designSize: Size(375, 667),
-            builder: () => MaterialApp(
-                  theme: ThemeData(
-                      primarySwatch: Colors.orange,
-                      highlightColor: Colors.transparent,
-                      splashColor: Colors.transparent),
-                  // 配置路由
-                  onGenerateRoute: Routes.router.generator,
-                  navigatorKey: navigatorKey,
-                  home: MainPage(),
-                  // routes: staticRouters,
-                )));
+        child: Consumer<Lang>(builder: (context, Lang value, child) {
+          return MaterialApp(
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              S.delegate
+            ],
+            locale: value.curLocale,
+            supportedLocales: [
+              const Locale('zh', 'CN'),
+              const Locale('en', 'US'),
+            ],
+            theme: ThemeData(
+                primarySwatch: Colors.orange,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent),
+            // 配置路由
+            onGenerateRoute: Routes.router.generator,
+            navigatorKey: navigatorKey,
+            home: MainPage(),
+            // routes: staticRouters,
+          );
+        }));
   }
 }
 
@@ -59,20 +69,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
   StreamSubscription _sub;
-
-  List<Widget> _pageList = [
-    HomePage(),
-    ListPage(),
-    UserPage(),
-  ];
-
-  List<BottomNavigationBarItem> _barItem = [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
-    BottomNavigationBarItem(icon: Icon(Icons.list), label: '列表'),
-    BottomNavigationBarItem(icon: Icon(Icons.people), label: '我的'),
-  ];
 
   @override
   void initState() {
@@ -92,25 +89,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: MyAppBar(),
-        preferredSize: Size.fromHeight(90.0),
-      ),
-      drawer: MyDrawer(),
-      body: this._pageList[this._currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (int index) {
-          setState(() {
-            this._currentIndex = index;
-          });
-        },
-        currentIndex: this._currentIndex,
-        items: _barItem,
-        fixedColor: Colors.orange,
-        selectedFontSize: 12,
-        type: BottomNavigationBarType.fixed,
-      ),
-    );
+    return ScreenUtilInit(
+        designSize: Size(375, 667), builder: () => IndexPage());
   }
 }

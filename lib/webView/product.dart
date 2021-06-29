@@ -44,7 +44,7 @@ class _ProductWebviewState extends State<ProductWebview> {
   }
 
   _loadHtmlFromAssets() async {
-    String fileText = await rootBundle.loadString('assets/index.html');
+    String fileText = await rootBundle.loadString('assets/webview.html');
     _webViewController.loadUrl(Uri.dataFromString(fileText,
             mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
         .toString());
