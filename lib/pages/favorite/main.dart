@@ -4,8 +4,10 @@ import 'package:flutter_demo/common/utils/main.dart';
 class FavoritePage extends StatefulWidget {
   final String id;
   final String name;
+  final dynamic paramsJson;
 
-  FavoritePage(this.id, {Key key, this.name}) : super(key: key);
+  FavoritePage(this.id, {Key key, this.name, this.paramsJson})
+      : super(key: key);
 
   @override
   _FavoritePageState createState() => _FavoritePageState();
@@ -39,6 +41,7 @@ class _FavoritePageState extends State<FavoritePage> {
           SizedBox(width: double.infinity, height: 10.h),
           Text('page - id: ${widget.id}'),
           Text('page params -- name: ${widget.name}'),
+          Text('page params --- JsonParams: ${widget.paramsJson}'),
           TextButton(
               onPressed: () {
                 this._getdata();

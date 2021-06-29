@@ -3,11 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// 本地存储
 class Localstorage {
-  static Localstorage _instance = Localstorage._();
+  static Localstorage _instance = Localstorage._init();
   factory Localstorage() => _instance;
   static SharedPreferences _prefs;
 
-  Localstorage._();
+  Localstorage._init();
 
   static Future<void> init() async {
     if (_prefs == null) {

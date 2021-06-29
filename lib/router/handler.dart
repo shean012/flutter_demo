@@ -20,7 +20,10 @@ Handler carPageHandler = Handler(
 // 路由传参 favorite 页面
 Handler favoritePageHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  dynamic jsonParams;
   String id = params['id'].first;
   String name = params['name'].first;
-  return FavoritePage(id, name: name);
+  dynamic jsonData = params['paramsJson'];
+  if (jsonData != null) jsonParams = jsonData.first;
+  return FavoritePage(id, name: name, paramsJson: jsonParams);
 });

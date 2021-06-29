@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:cookie_jar/cookie_jar.dart';
-import 'package:dio/dio.dart';
-import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:flutter_demo/common/request/cache.dart';
 import 'package:dio/adapter.dart';
+import 'package:flutter_demo/common/request/handler.dart';
+// import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio/dio.dart';
+// import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:flutter_demo/common/request/cache.dart';
 import 'package:flutter_demo/common/config/proxyConfig.dart';
 
 class Request {
@@ -28,14 +29,14 @@ class Request {
     dio = Dio(options);
 
     // 设置cookie
-    CookieJar cookieJar = CookieJar();
+    // CookieJar cookieJar = CookieJar();
     // 设置自定携带 cookies
-    dio.interceptors.add(CookieManager(cookieJar));
+    // dio.interceptors.add(CookieManager(cookieJar));
     dio.interceptors.add(CacheGet());
+    dio.interceptors.add(RrequsetHandler());
     dio.interceptors.add(InterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
       // do something before request is sent
-      options = handleRequestParams(options);
       return handler.next(options);
     }, onResponse: (Response res, ResponseInterceptorHandler handler) {
       // do someting before response
@@ -57,28 +58,10 @@ class Request {
     }
   }
 
-  Map<String, dynamic> publicParams = {
-    "site": 'us',
-    "language": 'en',
-    "currency": 'usd',
-    "token": '',
-    "pf": 'm'
-  };
-
-  RequestOptions handleRequestParams(RequestOptions options) {
-    if (options.method.toLowerCase() == 'post') {
-      Map<String, dynamic> newVal = options.data.toJson();
-      newVal.addEntries(publicParams.entries);
-      options.data = newVal;
-    }
-    return options;
-  }
-
   /// refresh 是否刷新 默认 false
   /// cache 是否缓存 默认 false
   /// list 是否列表 默认 false
   /// cacheKey 缓存key
-
   Future get(
     String path, {
     dynamic params,

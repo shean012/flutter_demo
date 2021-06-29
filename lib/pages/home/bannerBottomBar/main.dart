@@ -10,7 +10,6 @@ class BannerBottomBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('home page run build');
     return Container(
       margin: this.margin,
       child: Row(

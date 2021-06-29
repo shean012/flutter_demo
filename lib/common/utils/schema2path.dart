@@ -1,12 +1,14 @@
 import 'package:flutter_demo/router/routes.dart';
 
 void handleSchema(context, String link) {
-  String _targetUrl = link.replaceFirst(
+  String targetUrl = link.replaceFirst(
     'baomi://',
     '/',
   );
-  if (_targetUrl != null) {
+  Uri _paramsUri = Uri.parse(targetUrl);
+  Map<String, String> schemaParams = _paramsUri.queryParameters;
+  if (targetUrl != null) {
     // do something before page push
-    Routes.push(context, _targetUrl);
+    Routes.push(context, targetUrl, params: schemaParams);
   }
 }
